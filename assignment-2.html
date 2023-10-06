@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="FILL IN YOUR FULL NAME" />
+<meta name="author" content="Daniyar Imanaliev" />
 
 
 <title>Assignment 2 - Functions, iteration and debugging</title>
@@ -1808,8 +1808,8 @@ display: none;
 
 <h1 class="title toc-ignore">Assignment 2 - Functions, iteration and
 debugging</h1>
-<h4 class="author">FILL IN YOUR FULL NAME</h4>
-<h4 class="date">September 25, 2023 | 09:21:58 | CEST</h4>
+<h4 class="author">Daniyar Imanaliev</h4>
+<h4 class="date">October 06, 2023 | 17:53:52 | CEST</h4>
 
 </div>
 
@@ -1818,10 +1818,14 @@ debugging</h1>
 div.answer {background-color:#f3f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <!-- Do not forget to input your Github username in the YAML configuration up there -->
-<hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># LOAD THE PACKAGES YOU ARE USING IN THIS CODE CHUNK library(nameofpackage)</span></span></code></pre></div>
+<p>Daniyar2822</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(eeptools)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">library</span>(unvotes)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span></code></pre></div>
 <p><br></p>
-<hr />
 <div id="task-1---fun-with-functions" class="section level3">
 <h3>Task 1 - Fun with functions</h3>
 <ol style="list-style-type: lower-alpha">
@@ -1830,7 +1834,15 @@ returns the number 42 regardless of which input is provided, and show
 that it works providing three function calls that test different input
 types!</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>ultimate_answer <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">return</span>(<span class="dv">42</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>}</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">ultimate_answer</span>(<span class="dv">34</span>)</span></code></pre></div>
+<pre><code>[1] 42</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">ultimate_answer</span>(<span class="st">&#39;hello&#39;</span>)</span></code></pre></div>
+<pre><code>[1] 42</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">ultimate_answer</span>(<span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>[1] 42</code></pre>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Write an R function called <code>color_guessing_game()</code> that
 allows the player to guess one of four colors (red, yellow, green,
@@ -1840,7 +1852,21 @@ they win, otherwise, they lose. <em>Hint:</em> You will need the
 function <code>readline()</code> to enable interactive communication
 between the game and the player.</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>game <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="co">#creating sample of colors using sample function</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  colors <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">size =</span> <span class="dv">1</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="co">#creating interactive part of function for receiving input from the user</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Hello! Choose the color (red, yellow, green, or blue): &quot;</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  player <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">readline</span>())</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="cf">if</span> (player <span class="sc">==</span> colors) {</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Congratulations! You won&quot;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;Sorry, you lost&quot;</span>) </span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  }</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>}</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>  <span class="fu">game</span>()</span></code></pre></div>
+<pre><code>Hello! Choose the color (red, yellow, green, or blue): 
+Sorry, you lost</code></pre>
 <p><br></p>
 <hr />
 </div>
@@ -1863,7 +1889,26 @@ vote in the UN general assembly since 1990. Votes where voting
 information for one of the countries is missing should be
 discarded.</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># combining &#39;un_roll_calls&#39; dataset and &#39;un_votes&#39; dataset</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>un <span class="ot">&lt;-</span> <span class="fu">full_join</span>(un_roll_calls, un_votes, <span class="at">by =</span> <span class="st">&quot;rcid&quot;</span>, <span class="at">relationship =</span> <span class="st">&quot;many-to-many&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># creating specific dataframe only for US and Germany data, filtering data from 1990 removing missed ones</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>de_us <span class="ot">&lt;-</span> un <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="st">&#39;1990-01-01&#39;</span>, <span class="sc">!</span><span class="fu">is.na</span>(vote) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(country)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="co"># it is important to note that before 03 October 1990 (date of unification of Germany), the name of Federal Republic of Germany was used, </span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="co"># accordingly for purposes of this task, name of &#39;Federal Republic of Germany&#39; shall be also used</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country_code =</span> <span class="fu">ifelse</span>(country <span class="sc">==</span> <span class="st">&quot;Federal Republic of Germany&quot;</span>, <span class="st">&quot;DE&quot;</span>, country_code)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Germany&quot;</span>, <span class="st">&quot;Federal Republic of Germany&quot;</span>, <span class="st">&quot;United States&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>  <span class="co">#removing redundant objects, remaining only rcid, country_code and vote</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>  <span class="fu">select</span>(rcid, country_code, vote) <span class="sc">%&gt;%</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>  <span class="co">#creating object for US and DE votes</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> country_code, <span class="at">values_from =</span> vote) <span class="sc">%&gt;%</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>  <span class="co">#removing missed values</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#calculating average </span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>agr_rate <span class="ot">&lt;-</span> <span class="fu">mean</span>(de_us<span class="sc">$</span>DE <span class="sc">==</span> de_us<span class="sc">$</span>US) <span class="co">#it is important to note that abstain votes also included to calculations, since abstain voting also shows political position of UN members</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;On average, from 1990 Germany agreed with the US in &quot;</span>, <span class="fu">round</span>(agr_rate<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>On average, from 1990 Germany agreed with the US in 44.74%</code></pre>
 <p><br></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Now, create a function, <code>votes_agreement_calculator()</code>,
@@ -1876,14 +1921,51 @@ package. Then, test the function by computing the agreement rates for
 (a) the United States and Russia for votes cast in 2000 and later and
 (b) France and the UK for votes cast in 2000 and later!</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co">#creating function using our previous code</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>votes_agreement_calculator <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">code =</span> <span class="fu">c</span>(<span class="st">&#39;DE&#39;</span>, <span class="st">&#39;US&#39;</span>), <span class="at">year_min =</span> <span class="dv">1990</span>) {</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  un <span class="ot">&lt;-</span> <span class="fu">full_join</span>(un_roll_calls, un_votes, <span class="at">by =</span> <span class="st">&quot;rcid&quot;</span>, <span class="at">relationship =</span> <span class="st">&quot;many-to-many&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>    <span class="fu">select</span>(rcid, date, country_code, vote) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(vote) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(country_code)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>    <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="fu">paste</span>(year_min, <span class="st">&#39;-01-01&#39;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)) <span class="co">#using only year as required</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  </span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(un<span class="sc">$</span>country_code <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%in%</span> code) <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>) <span class="co">#it is necessary to check if input contains correct code</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>    un_members <span class="ot">&lt;-</span> un <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country_code <span class="sc">%in%</span> code) <span class="sc">%&gt;%</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>      <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> country_code, <span class="at">values_from =</span> vote) <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>      <span class="fu">drop_na</span>()</span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>    agr_rate <span class="ot">&lt;-</span> <span class="fu">mean</span>(un_members[[code[<span class="dv">1</span>]]] <span class="sc">==</span> un_members[[code[<span class="dv">2</span>]]])</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">round</span>(agr_rate <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>))</span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>  }</span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co">#checking our code. Please note that result will be different from previous task, since it was intentionally ignored special cases like unification of Germany</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">votes_agreement_calculator</span>(<span class="at">code=</span><span class="fu">c</span>(<span class="st">&#39;US&#39;</span>,<span class="st">&#39;DE&#39;</span>),<span class="at">year_min =</span> <span class="dv">1990</span>)</span></code></pre></div>
+<pre><code>[1] 44.92</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#calculating (a) the United States and Russia for votes cast in 2000 and later</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">votes_agreement_calculator</span>(<span class="at">code=</span><span class="fu">c</span>(<span class="st">&#39;RU&#39;</span>,<span class="st">&#39;US&#39;</span>),<span class="at">year_min =</span> <span class="dv">2000</span>)</span></code></pre></div>
+<pre><code>[1] 24.6</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co">#calculating (b) France and the UK for votes cast in 2000 and later</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">votes_agreement_calculator</span>(<span class="at">code=</span><span class="fu">c</span>(<span class="st">&#39;FR&#39;</span>,<span class="st">&#39;GB&#39;</span>),<span class="at">year_min =</span> <span class="dv">2000</span>)</span></code></pre></div>
+<pre><code>[1] 92.45</code></pre>
 <p><br></p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Using <code>purrr</code> functionality, find out which three
 countries on average agreed with the US the most from the year 2000
 on!</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co">#creating object which excludes US as well as missed value</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>not_us <span class="ot">&lt;-</span> un<span class="sc">$</span>country_code <span class="sc">%&gt;%</span> <span class="fu">na.exclude</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> .[<span class="sc">-</span><span class="fu">which</span>(. <span class="sc">==</span><span class="st">&quot;US&quot;</span>)]</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co">#with usage map_dbl function calculating every UN members on average percent of mutual agreement during UN voting in ascending order</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>top_allies <span class="ot">&lt;-</span> not_us <span class="sc">%&gt;%</span> </span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>  <span class="fu">map_dbl</span>(<span class="sc">~</span>(<span class="fu">votes_agreement_calculator</span>(<span class="at">code =</span> <span class="fu">c</span>(.x,<span class="st">&quot;US&quot;</span>),<span class="at">year_min =</span> <span class="dv">2000</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>  <span class="fu">order</span>(<span class="at">decreasing =</span> T)</span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># finding top three UN members</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>top_three_allies <span class="ot">&lt;-</span> top_allies[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]</span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;There are the following countries agreed with US the most from the year 2000:&quot;</span>, <span class="fu">countrycode</span>(not_us[top_three_allies], <span class="at">origin =</span> <span class="st">&#39;iso2c&#39;</span>, <span class="at">destination =</span> <span class="st">&#39;country.name&#39;</span>))</span></code></pre></div>
+<pre><code>There are the following countries agreed with US the most from the year 2000: Israel Micronesia (Federated States of) Palau</code></pre>
 <p><br></p>
 <hr />
 </div>
@@ -1891,34 +1973,34 @@ on!</li>
 <h3>Task 3 - Debugging code</h3>
 <p>The following code snippet contains various bugs. Flag them and
 suggest a fix by adding a comment in the respective line. Example:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(Tidyverse) <span class="co"># </span><span class="al">BUG</span><span class="co">: typo in library(Tidyverse); should be library(tidyverse) instead</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">library</span>(Unvotes)</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># get continents data</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>continents <span class="ot">&lt;-</span> countrycode<span class="sc">:</span>codelist <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">select</span>(continent, iso2c) <span class="sc">%&gt;%</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  <span class="fu">rename</span>(country_code <span class="sc">==</span> iso2c)</span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>un_votes <span class="ot">&lt;-</span> <span class="fu">left_join</span>(<span class="at">x =</span> un_votes, <span class="at">y =</span> continents, <span class="at">by =</span> country_code)</span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co"># get data on European UN votes</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>eu_un_votes <span class="ot">&lt;-</span> <span class="fu">left_join</span>(un_votes, un_roll_calls, <span class="at">by =</span> <span class="st">&quot;rcid&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="fu">left_join</span>(., un_roll_call_issues, <span class="at">by =</span> <span class="st">&quot;rcid&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>, </span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>         date <span class="sc">&gt;=</span> <span class="st">&quot;1991-01-01&quot;</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> <span class="st">&quot;2021-12-31&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>  <span class="fu">drop_na</span>(short_name)</span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co"># encode Europe&#39;s voting behavior numerically</span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>eu_un_votes <span class="ot">&lt;-</span> eu_un_votes <span class="sc">%&gt;%</span> </span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yes_vt =</span> <span class="fu">if_else</span>(vote <span class="sc">==</span> <span class="st">&quot;yes&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)),</span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>         no_vt <span class="ot">=</span> <span class="fu">if_else</span>(vote <span class="sc">==</span> <span class="st">&quot;no&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>         abstention <span class="ot">=</span> <span class="fu">if_else</span>(vote <span class="sc">==</span> <span class="st">&quot;abstain&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)<span class="er">)</span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co"># list top 10 most disagreed with UN resolutions</span></span>
-<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>hated_un <span class="ot">&lt;-</span> eu_un_votes <span class="sc">%&gt;%</span></span>
-<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a>  <span class="fu">group_by</span>(unres)</span>
-<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sh_disagree_with =</span> <span class="fu">sum</span>(no_vt,<span class="at">na.rm =</span> T) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">c</span>(yes_vt,no_vt, abstention), <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sh_disagree_with)) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a>hated_un</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">library</span>(Tidyverse) <span class="co"># </span><span class="al">BUG</span><span class="co">: typo in library(Tidyverse); should be library(tidyverse) instead</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="fu">library</span>(Unvotes) <span class="co"># </span><span class="al">BUG</span><span class="co">: typo in library(Unvotes); should be library(unvotes)</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="co"># get continents data</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>continents <span class="ot">&lt;-</span> countrycode<span class="sc">:</span>codelist <span class="sc">%&gt;%</span> <span class="co"># </span><span class="al">BUG</span><span class="co">: should be double colons (::) instead of single one</span></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a>  <span class="fu">select</span>(continent, iso2c) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a>  <span class="fu">rename</span>(country_code <span class="sc">==</span> iso2c)</span>
+<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a>un_votes <span class="ot">&lt;-</span> <span class="fu">left_join</span>(<span class="at">x =</span> un_votes, <span class="at">y =</span> continents, <span class="at">by =</span> country_code)</span>
+<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="co"># get data on European UN votes</span></span>
+<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a>eu_un_votes <span class="ot">&lt;-</span> <span class="fu">left_join</span>(un_votes, un_roll_calls, <span class="at">by =</span> <span class="st">&quot;rcid&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a>  <span class="fu">left_join</span>(., un_roll_call_issues, <span class="at">by =</span> <span class="st">&quot;rcid&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>, </span>
+<span id="cb22-14"><a href="#cb22-14" tabindex="-1"></a>         date <span class="sc">&gt;=</span> <span class="st">&quot;1991-01-01&quot;</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> <span class="st">&quot;2021-12-31&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-15"><a href="#cb22-15" tabindex="-1"></a>  <span class="fu">drop_na</span>(short_name)</span>
+<span id="cb22-16"><a href="#cb22-16" tabindex="-1"></a><span class="co"># encode Europe&#39;s voting behavior numerically</span></span>
+<span id="cb22-17"><a href="#cb22-17" tabindex="-1"></a>eu_un_votes <span class="ot">&lt;-</span> eu_un_votes <span class="sc">%&gt;%</span> </span>
+<span id="cb22-18"><a href="#cb22-18" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yes_vt =</span> <span class="fu">if_else</span>(vote <span class="sc">==</span> <span class="st">&quot;yes&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)), <span class="co">#BUG: should only one parenthesis instead of two</span></span>
+<span id="cb22-19"><a href="#cb22-19" tabindex="-1"></a>         no_vt <span class="ot">=</span> <span class="fu">if_else</span>(vote <span class="sc">==</span> <span class="st">&quot;no&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb22-20"><a href="#cb22-20" tabindex="-1"></a>         abstention <span class="ot">=</span> <span class="fu">if_else</span>(vote <span class="sc">==</span> <span class="st">&quot;abstain&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)<span class="er">)</span></span>
+<span id="cb22-21"><a href="#cb22-21" tabindex="-1"></a><span class="co"># list top 10 most disagreed with UN resolutions</span></span>
+<span id="cb22-22"><a href="#cb22-22" tabindex="-1"></a>hated_un <span class="ot">&lt;-</span> eu_un_votes <span class="sc">%&gt;%</span></span>
+<span id="cb22-23"><a href="#cb22-23" tabindex="-1"></a>  <span class="fu">group_by</span>(unres) <span class="co">#BUG : pipe operator &#39;%&gt;%&#39; missed</span></span>
+<span id="cb22-24"><a href="#cb22-24" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sh_disagree_with =</span> <span class="fu">sum</span>(no_vt,<span class="at">na.rm =</span> T) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">c</span>(yes_vt,no_vt, abstention), <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-25"><a href="#cb22-25" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sh_disagree_with)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-26"><a href="#cb22-26" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb22-27"><a href="#cb22-27" tabindex="-1"></a>hated_un</span></code></pre></div>
 </div>
 
 
