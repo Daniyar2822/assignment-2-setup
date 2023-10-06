@@ -25,8 +25,6 @@ knitr::opts_chunk$set(echo = TRUE,
                       comment = NA)
 ```
 
-<!-- Do not forget to input your Github username in the YAML configuration up there --> 
-
 Daniyar2822
 
 ```{r, include = T}
